@@ -1,0 +1,16 @@
+{
+  "users": [],
+  "donors": [
+    {
+      "name": "ABINA MATHEW",
+      "bloodGroup": "A+",
+      "phone": "9496918810"
+    }
+  ],
+  "bloodStock": {
+    "A+": 0,
+    "B+": 0,
+    "O+": 0,
+    "AB+": 0
+  }
+}

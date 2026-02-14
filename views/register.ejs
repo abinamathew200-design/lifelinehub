@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register Donor</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Register Donor</h1>
+
+        <form action="/register" method="POST">
+            <input type="text" name="name" placeholder="Name" required>
+            <select name="bloodGroup">
+                <option>A+</option>
+                <option>B+</option>
+                <option>O+</option>
+                <option>AB+</option>
+            </select>
+            <input type="text" name="phone" placeholder="Phone" required>
+            <button type="submit">Register</button>
+        </form>
+
+        <div class="nav">
+            <a href="/dashboard">Back</a>
+        </div>
+    </div>
+</body>
+</html>

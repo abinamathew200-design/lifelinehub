@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Blood Bank</title>
+</head>
+<body>
+
+<h1>Blood Bank Management</h1>
+
+<h2>Available Blood Stock</h2>
+<ul>
+    <% for(let group in bloodStock) { %>
+        <li><%= group %> : <%= bloodStock[group] %> units</li>
+    <% } %>
+</ul>
+
+<h2>Register Donor</h2>
+<form action="/register" method="POST">
+    Name: <input type="text" name="name" required>
+    Blood Group:
+    <select name="bloodGroup">
+        <option>A+</option>
+        <option>B+</option>
+        <option>O+</option>
+        <option>AB+</option>
+    </select>
+    <button type="submit">Register</button>
+</form>
+
+<h2>Request Blood</h2>
+<form action="/request" method="POST">
+    <select name="bloodGroup">
+        <option>A+</option>
+        <option>B+</option>
+        <option>O+</option>
+        <option>AB+</option>
+    </select>
+    <button type="submit">Request</button>
+</form>
+
+<a href="/donors">View Donors</a>
+
+</body>
+</html>

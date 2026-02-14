@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<h1 style="text-align:center;color:rgb(18, 14, 14);">Blood Bank Dashboard</h1>
+
+<div class="nav">
+    <a href="/register">Register Donor</a> |
+    <a href="/logout">Logout</a>
+</div>
+<label>Filter by Blood Group:</label>
+<label for="bloodFilter">Filter by Blood Group:</label>
+
+<select id="bloodFilter" onchange="filterTable()">
+    <option value="all">All</option>
+    <option value="A+">A+</option>
+    <option value="B+">B+</option>
+    <option value="O+">O+</option>
+    <option value="AB+">AB+</option>
+</select>
+<h2>Check Blood Availability</h2>
+
+<form action="/check-availability" method="POST">
+
+    <select name="bloodGroup">
+        <option>A+</option>
+        <option>B+</option>
+        <option>O+</option>
+        <option>AB+</option>
+    </select>
+
+    <button type="submit">Check</button>
+
+</form>
+<% if (typeof availabilityResult !== "undefined" && availabilityResult) { %>
+
+
+    <h3>
+        Blood Group: <%= availabilityResult.group %>
+    </h3>
+
+    <p>
+        Units Available: <%= availabilityResult.units %>
+    </p>
+
+    <p>
+        Status:
+        <% if (availabilityResult.status === "Available") { %>
+            <span style="color:green;">Available</span>
+        <% } else { %>
+            <span style="color:red;">Out of Stock</span>
+        <% } %>
+    </p>
+
+<% } %>
+
+
+
+<table class="table"id="donorTable">
+    <tr>
+        <th>Name</th>
+        <th>Blood Group</th>
+        <th>Phone</th>
+    </tr>
+
+    <% donors.forEach(donor => { %>
+        <tr>
+            <td><%= donor.name %></td>
+            <td><%= donor.bloodGroup %></td>
+            <td><%= donor.phone %></td>
+        </tr>
+    <% }) %>
+   
+
+    </table>
+
+
+<script>
+function filterTable() {
+    let filter = document.getElementById("bloodFilter").value;
+    let rows = document.querySelectorAll("#donorTable tr");
+
+    rows.forEach((row, index) => {
+        if (index === 0) return; // skip header
+
+        let bloodCell = row.children[1]; // Blood group column
+        if (bloodCell) {
+            let bloodGroup = bloodCell.textContent.trim();
+
+            if (filter === "all" || bloodGroup === filter) {
+                row.style.display = "";
+            } else {
+                row.style.display = "none";
+            }
+        }
+    });
+}
+</script>
+
+</body>
+</html>

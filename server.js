@@ -6,23 +6,12 @@ const path = require("path");
 const app = express();
 const PORT = 5000;
 
-
-app.post("/search", (req, res) => {
-    res.send("Search route working");
-});
-
-app.post("/emergency", (req, res) => {
-    res.send("Emergency route working");
-});
 app.set("view engine", "ejs");
-
-
 
 // Middleware
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.use(express.static("public"));
-
-app.set("view engine", "ejs");
 
 // Session setup
 app.use(session({
@@ -53,12 +42,70 @@ function isAuthenticated(req, res, next) {
     if (req.session.user) {
         next();
     } else {
-        res.redirect("/");
+        res.redirect("/login");
     }
 }
 
-// ================= LOGIN PAGE =================
+// ================= HOME PAGE =================
 app.get("/", (req, res) => {
+    const data = readData();
+    res.render("index", { 
+        bloodStock: data.bloodStock,
+        message: null,
+        messageType: null,
+        donors: null
+    });
+});
+
+// ================= PUBLIC DONOR REGISTRATION (from home page) =================
+app.post("/register", (req, res) => {
+    const { name, bloodGroup, phone, city } = req.body;
+
+    const data = readData();
+    data.donors.push({ name, bloodGroup, phone, city });
+    writeData(data);
+
+    // Redirect back to home page with success message
+    res.redirect("/login");
+});
+
+// ================= SEARCH DONORS =================
+app.post("/search", (req, res) => {
+    const { bloodGroup, city } = req.body;
+    const data = readData();
+
+    // Filter donors by blood group and city
+    const filteredDonors = data.donors.filter(donor => 
+        donor.bloodGroup === bloodGroup && 
+        donor.city.toLowerCase() === city.toLowerCase()
+    );
+
+    res.render("index", {
+        bloodStock: data.bloodStock,
+        message: null,
+        messageType: null,
+        donors: filteredDonors
+    });
+});
+
+// ================= EMERGENCY REQUEST =================
+app.post("/emergency", (req, res) => {
+    const { patientName, bloodGroup, hospitalName, contactNumber } = req.body;
+    
+    // Here you can add logic to send notifications, save emergency requests, etc.
+    // For now, we'll just show a success message
+    
+    const data = readData();
+    res.render("index", {
+        bloodStock: data.bloodStock,
+        message: `Emergency request submitted for ${patientName}. Blood Group: ${bloodGroup}. We will contact available donors immediately.`,
+        messageType: "success",
+        donors: null
+    });
+});
+
+// ================= LOGIN PAGE =================
+app.get("/login", (req, res) => {
     res.render("login", { error: null });
 });
 
@@ -74,30 +121,34 @@ app.post("/login", (req, res) => {
     }
 });
 
-// ================= DASHBOARD =================
+// ================= DASHBOARD (Admin Only) =================
 app.get("/dashboard", isAuthenticated, (req, res) => {
     const data = readData();
-    res.render("dashboard", { donors: data.donors,bloodStock:data.bloodStock,availabilityResult:null });
+    res.render("dashboard", { 
+        donors: data.donors,
+        bloodStock: data.bloodStock,
+        availabilityResult: null 
+    });
 });
 
-// ================= REGISTRATION PAGE =================
-app.get("/register", isAuthenticated, (req, res) => {
+// ================= ADMIN DONOR REGISTRATION PAGE =================
+app.get("/admin/register", isAuthenticated, (req, res) => {
     res.render("register");
 });
 
-// ================= REGISTER DONOR =================
-app.post("/register", isAuthenticated, (req, res) => {
-    const { name, bloodGroup, phone } = req.body;
+// ================= ADMIN REGISTER DONOR =================
+app.post("/admin/register", isAuthenticated, (req, res) => {
+    const { name, bloodGroup, phone, city } = req.body;
 
     const data = readData();
-    data.donors.push({ name, bloodGroup, phone });
+    data.donors.push({ name, bloodGroup, phone, city });
     writeData(data);
 
     res.redirect("/dashboard");
 });
-// ================= UPDATE STOCK =================
-app.post("/update-stock", isAuthenticated, (req, res) => {
 
+// ================= UPDATE STOCK (Admin Only) =================
+app.post("/update-stock", isAuthenticated, (req, res) => {
     const { bloodGroup, units } = req.body;
 
     const data = readData();
@@ -113,7 +164,6 @@ app.post("/update-stock", isAuthenticated, (req, res) => {
     res.redirect("/dashboard");
 });
 
-
 // ================= LOGOUT =================
 app.get("/logout", (req, res) => {
     req.session.destroy();
@@ -124,4 +174,3 @@ app.get("/logout", (req, res) => {
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
 });
-

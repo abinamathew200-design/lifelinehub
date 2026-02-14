@@ -4,7 +4,7 @@
 
 # LIFELINE HUB 🎯
 
-## Basic Details
+The Online Blood Bank Availability System is a simple website designed to help users quickly check the availability of different blood groups in various cities. The main aim of this project is to make it easier for patients or hospitals to find required blood during emergencies. The system displays basic details such as blood group, city, and available units, and allows users to search by city. It is developed using HTML, CSS, and JavaScript (with optional Express.js for backend) and stores data in a simple format without a database. This project helps improve accessibility, saves time during emergencies, and provides a user-friendly way to check blood availability.
 
 ### Team Name: HACK STACK
 

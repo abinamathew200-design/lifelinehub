@@ -2,27 +2,29 @@
   <img src="./img.png" alt="Project Banner" width="100%">
 </p>
 
-# [Project Name] 🎯
+# LIFELINE HUB 🎯
 
 ## Basic Details
 
-### Team Name: [Name]
+### Team Name: HACK STACK
 
 ### Team Members
-- Member 1: [Name] - [College]
-- Member 2: [Name] - [College]
-
+- Member 1: Abina Mathew - LBS COLLEGE
+- Member 2:Sreethu S -LBS COLLEGE
 ### Hosted Project Link
-[mention your project hosted link here]
-
+https://698ff09dbfe76fd28b43c6df--deft-croissant-e9bfdd.netlify.app/
 ### Project Description
-[2-3 lines about what your project does]
+Lifeline Hub is a web-based blood bank management system that connects blood donors with patients in need. It allows users to register donors, search for available blood by group and city, and send emergency blood requests. The system helps manage donor records and blood stock efficiently without using a database.
 
 ### The Problem statement
-[What problem are you solving?]
+Many hospitals and patients struggle to find available blood donors quickly during emergencies. There is no simple platform to manage donor details and search for blood based on location and blood group.
+
+Your project solves this problem by providing an easy system to register donors, search blood availability, and send emergency requests quickly.
 
 ### The Solution
-[How are you solving it?]
+We solve this problem by creating a web-based blood bank system where donors can register their details and blood group. The system stores donor information and blood stock in a structured format.
+
+Users can search for required blood by selecting the blood group and city, and in emergency situations, they can send urgent requests through the platform. This makes finding blood faster and more organized.
 
 ---
 
@@ -31,113 +33,93 @@
 ### Technologies/Components Used
 
 **For Software:**
-- Languages used: [e.g., JavaScript, Python, Java]
-- Frameworks used: [e.g., React, Django, Spring Boot]
-- Libraries used: [e.g., axios, pandas, JUnit]
-- Tools used: [e.g., VS Code, Git, Docker]
+- Languages used: [node JavaScript,html]
+- Frameworks used: [Express.js]
+- Libraries used: [Express.js]
+- Tools used: [VS Code, Git, ]
 
-**For Hardware:**
-- Main components: [List main components]
-- Specifications: [Technical specifications]
-- Tools required: [List tools needed]
 
----
 
 ## Features
 
 List the key features of your project:
-- Feature 1: [Description]
-- Feature 2: [Description]
-- Feature 3: [Description]
-- Feature 4: [Description]
+✅ Donor Registration – Allows users to register blood donors with name, blood group, phone, and city.
 
+🔍 Search Blood – Users can search for available donors by blood group and location.
+
+🚨 Emergency Request – Enables sending urgent blood requests during critical situations.
+
+🔐 Login Authentication – Only authorized users can access the dashboard.
+
+📁 File-based Storage – Stores donor and blood stock data using a JSON file (without database).
 ---
 
 ## Implementation
+The system includes routes for login, donor registration, blood search, stock update, and emergency requests, all managed through the Express server.
 
 ### For Software:
 
 #### Installation
 ```bash
-[Installation commands - e.g., npm install, pip install -r requirements.txt]
-```
+vs code
+git
+node.js
 
 #### Run
 ```bash
 [Run commands - e.g., npm start, python app.py]
 ```
 
-### For Hardware:
 
-#### Components Required
-[List all components needed with specifications]
-
-#### Circuit Setup
-[Explain how to set up the circuit]
-
----
 
 ## Project Documentation
 
 ### For Software:
 
-#### Screenshots (Add at least 3)
+#### Screenshots 
+<img width="1865" height="893" alt="scr1" src="https://github.com/user-attachments/assets/66f8268e-bf13-4a31-9896-c198774e21e7" />(The homepage features a clean and user-friendly interface with a bold red header symbolizing blood donation awareness. It includes:
 
-![Screenshot1](Add screenshot 1 here with proper name)
-*Add caption explaining what this shows*
+🔴 A branded header with the title “LIFELINE HUB”
 
-![Screenshot2](Add screenshot 2 here with proper name)
-*Add caption explaining what this shows*
+❤️ A tagline: “Donate Blood, Save Lives”
 
-![Screenshot3](Add screenshot 3 here with proper name)
-*Add caption explaining what this shows*
+🧭 A navigation bar with options:
 
-#### Diagrams
+Home
 
-**System Architecture:**
+Donor Register
 
-![Architecture Diagram](docs/architecture.png)
-*Explain your system architecture - components, data flow, tech stack interaction*
+Search Blood
 
-**Application Workflow:**
+Emergency
 
-![Workflow](docs/workflow.png)
-*Add caption explaining your workflow*
+The donor registration section allows users to enter:
 
----
+Full Name
 
-### For Hardware:
+Blood Group
 
-#### Schematic & Circuit
+Phone Number
 
-![Circuit](Add your circuit diagram here)
-*Add caption explaining connections*
+City)
 
-![Schematic](Add your schematic diagram here)
-*Add caption explaining the schematic*
+<img width="1868" height="580" alt="scr2" src="https://github.com/user-attachments/assets/070fb8af-c65a-4056-969d-1460c2a216c6" />(This section allows users to search for available blood donors. Users can select a blood group and enter a city to find matching donors. After entering the details, they click the Search button to view results.
 
-#### Build Photos
+It helps patients quickly find blood donors in their location.)
 
-![Team](Add photo of your team here)
+<img width="1872" height="552" alt="scr3" src="https://github.com/user-attachments/assets/e613fefb-8550-40c2-83b3-a8e2e78bc76d" />(This section allows users to send an urgent blood request. The user enters the patient name, required blood group, hospital name, and contact number. After filling in the details, they click Send Emergency Request.
 
-![Components](Add photo of your components here)
-*List out all components shown*
+This feature helps quickly request blood during critical situations.)
 
-![Build](Add photos of build process here)
-*Explain the build steps*
 
-![Final](Add photo of final product here)
-*Explain the final build*
 
----
 
-## Additional Documentation
 
-### For Web Projects with Backend:
 
-#### API Documentation
 
-**Base URL:** `https://api.yourproject.com`
+
+
+
 
 ##### Endpoints
 
@@ -365,8 +347,6 @@ python script.py -v --format json data.json
 
 *Explain what the video demonstrates - key features, user flow, technical highlights*
 
-### Additional Demos
-[Add any extra demo materials/links - Live site, APK download, online demo, etc.]
 
 ---
 
@@ -374,25 +354,13 @@ python script.py -v --format json data.json
 
 If you used AI tools during development, document them here for transparency:
 
-**Tool Used:** [e.g., GitHub Copilot, v0.dev, Cursor, ChatGPT, Claude]
+**Tool Used:**  GitHub Copilot,git,vs code,ChatGPT
 
 **Purpose:** [What you used it for]
 - Example: "Generated boilerplate React components"
 - Example: "Debugging assistance for async functions"
 - Example: "Code review and optimization suggestions"
 
-**Key Prompts Used:**
-- "Create a REST API endpoint for user authentication"
-- "Debug this async function that's causing race conditions"
-- "Optimize this database query for better performance"
-
-**Percentage of AI-generated code:** [Approximately X%]
-
-**Human Contributions:**
-- Architecture design and planning
-- Custom business logic implementation
-- Integration and testing
-- UI/UX design decisions
 
 *Note: Proper documentation of AI usage demonstrates transparency and earns bonus points in evaluation!*
 
@@ -400,15 +368,15 @@ If you used AI tools during development, document them here for transparency:
 
 ## Team Contributions
 
-- [Name 1]: [Specific contributions - e.g., Frontend development, API integration, etc.]
-- [Name 2]: [Specific contributions - e.g., Backend development, Database design, etc.]
-- [Name 3]: [Specific contributions - e.g., UI/UX design, Testing, Documentation, etc.]
+- Abina mathew: frontend development
+- 
+- [sreethu s]:UI/UX design, Testing, Documentation, etc.]
 
 ---
 
 ## License
 
-This project is licensed under the [LICENSE_NAME] License - see the [LICENSE](LICENSE) file for details.
+
 
 **Common License Options:**
 - MIT License (Permissive, widely used)
